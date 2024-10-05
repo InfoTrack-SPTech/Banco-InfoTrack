@@ -43,6 +43,7 @@ INSERT INTO Cargo (nome) VALUES ('Analista'), ('Gerente'), ('Administrador');
 
 CREATE TABLE Usuario (
     idUsuario INT,
+    email VARCHAR(80) NOT NULL,
     nome VARCHAR(45) NOT NULL,
     senha VARCHAR(60) NOT NULL, 
     telefone VARCHAR(15),        
@@ -55,13 +56,13 @@ CREATE TABLE Usuario (
 
 ALTER TABLE Usuario MODIFY COLUMN idUsuario INT auto_increment;
 
-INSERT INTO Usuario (nome, senha, telefone, fkCargo, fkEmpresa)
+INSERT INTO Usuario (email, nome, senha, telefone, fkCargo, fkEmpresa)
 VALUES 
-    ('Matheus Ferro', 'Matheus10', '11999911111', 3, 1),
-    ('Bruno Gomes', 'Bruno20', '11999922222', 3, 1),
-    ('Bianca Rodrigues', 'Bianca30', '11999933333', 3, 1),
-    ('Alejandro Castor', 'Alejandro40', '11999944444', 3, 1),
-    ('Cintia Ohara', 'Cintia50', '11999955555', 3, 1);
+    ('matheusFerro@infotrack.com', 'Matheus Ferro', 'Matheus10', '11999911111', 3, 1),
+    ('brunoGomes@infotrack.com', 'Bruno Gomes', 'Bruno20', '11999922222', 3, 1),
+    ('biancaRodrigues@infotrack.com', 'Bianca Rodrigues', 'Bianca30', '11999933333', 3, 1),
+    ('alejandroCastor@infotrack.com', 'Alejandro Castor', 'Alejandro40', '11999944444', 3, 1),
+    ('cintiaOhara@infotrack.com', 'Cintia Ohara', 'Cintia50', '11999955555', 3, 1);
     
 CREATE TABLE Local (
     idLocal INT AUTO_INCREMENT PRIMARY KEY,
@@ -83,10 +84,8 @@ CREATE TABLE Lembrete (
     fkUsuario INT NOT NULL,
     fkEmpresa INT NOT NULL,
     Parametro1 VARCHAR(45),
-    Parametro2 DOUBLE,
-    PRIMARY KEY (fkUsuario, fkEmpresa),
+    Parametro2 DECIMAL(5,2),
     FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
-    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
+    UNIQUE(Parametro1, Parametro2)
 );
-
-
