@@ -1,16 +1,9 @@
 CREATE DATABASE InfoTrack;
 USE InfoTrack;
 
-CREATE TABLE Zona (
-    idZona INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45)
-);
-
 CREATE TABLE Bairro (
     idBairro INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45),
-    fkZona INT NOT NULL,
-    FOREIGN KEY (fkZona) REFERENCES Zona(idZona)
+    nome VARCHAR(45)
 );
 
 CREATE TABLE Logradouro (
@@ -19,7 +12,25 @@ CREATE TABLE Logradouro (
     cep VARCHAR(9),
     numero VARCHAR(10),
     fkBairro INT NOT NULL,
+    latitude DECIMAL(9, 6),
+    longitude DECIMAL(9, 6),
     FOREIGN KEY (fkBairro) REFERENCES Bairro(idBairro)
+);
+
+CREATE TABLE Local (
+    idLocal INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45)
+);
+
+CREATE TABLE Crime (
+    idCrime INT AUTO_INCREMENT PRIMARY KEY,
+    natureza VARCHAR(45) ,
+    dataOcorrencia DATETIME,
+    descricao VARCHAR(255),      
+    fkLogradouro INT NOT NULL,
+    fkLocal INT NOT NULL,
+    FOREIGN KEY (fkLogradouro) REFERENCES Logradouro(idLogradouro),
+    FOREIGN KEY (fkLocal) REFERENCES Local(idLocal)
 );
 
 CREATE TABLE Empresa (
@@ -63,22 +74,6 @@ VALUES
     ('biancaRodrigues@infotrack.com', 'Bianca Rodrigues', 'Bianca30', '11999933333', 3, 1),
     ('alejandroCastor@infotrack.com', 'Alejandro Castor', 'Alejandro40', '11999944444', 3, 1),
     ('cintiaOhara@infotrack.com', 'Cintia Ohara', 'Cintia50', '11999955555', 3, 1);
-    
-CREATE TABLE Local (
-    idLocal INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45)
-);
-
-CREATE TABLE Crime (
-    idCrime INT AUTO_INCREMENT PRIMARY KEY,
-    natureza VARCHAR(45) ,
-    dataOcorrencia DATETIME,
-    descricao VARCHAR(255),      
-    fkLogradouro INT NOT NULL,
-    fkLocal INT NOT NULL,
-    FOREIGN KEY (fkLogradouro) REFERENCES Logradouro(idLogradouro),
-    FOREIGN KEY (fkLocal) REFERENCES Local(idLocal)
-);
 
 CREATE TABLE Lembrete (
     fkUsuario INT NOT NULL,
