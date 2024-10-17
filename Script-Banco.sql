@@ -9,11 +9,10 @@ CREATE TABLE Bairro (
 CREATE TABLE Logradouro (
     idLogradouro INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
-    cep VARCHAR(9),
     numero VARCHAR(10),
-    fkBairro INT NOT NULL,
     latitude DECIMAL(9, 6),
     longitude DECIMAL(9, 6),
+    fkBairro INT NOT NULL,
     FOREIGN KEY (fkBairro) REFERENCES Bairro(idBairro)
 );
 
@@ -50,7 +49,6 @@ CREATE TABLE Cargo (
 
 ALTER TABLE Cargo ADD CONSTRAINT chk_nome_cargo CHECK (nome IN ('Analista', 'Gerente', 'Administrador'));
 INSERT INTO Cargo (nome) VALUES ('Analista'), ('Gerente'), ('Administrador');
-
 
 CREATE TABLE Usuario (
     idUsuario INT,
