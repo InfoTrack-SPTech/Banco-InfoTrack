@@ -10,8 +10,8 @@ CREATE TABLE Logradouro (
     idLogradouro INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     numero VARCHAR(10),
-    latitude DECIMAL(9, 6),
-    longitude DECIMAL(9, 6),
+    latitude varchar(12),
+    longitude varchar(12),
     fkBairro INT,
     FOREIGN KEY (fkBairro) REFERENCES Bairro(idBairro)
 );
