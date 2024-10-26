@@ -18,13 +18,13 @@ CREATE TABLE Logradouro (
 
 CREATE TABLE Local (
     idLocal INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45)
+    nome VARCHAR(100)
 );
 
 CREATE TABLE Crime (
     idCrime INT AUTO_INCREMENT PRIMARY KEY,
-    natureza VARCHAR(45) ,
-    dataOcorrencia DATETIME,
+    natureza VARCHAR(100) ,
+    dataOcorrencia DATE,
     descricao VARCHAR(255),      
     fkLogradouro INT,
     fkLocal INT,
@@ -44,7 +44,7 @@ VALUES ('InfoTrack', '12345678000199', '11999999999');
 
 CREATE TABLE Cargo (
     idCargo INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45)
+    nome VARCHAR(50)
 );
 
 ALTER TABLE Cargo ADD CONSTRAINT chk_nome_cargo CHECK (nome IN ('Analista', 'Gerente', 'Administrador'));
@@ -53,7 +53,7 @@ INSERT INTO Cargo (nome) VALUES ('Analista'), ('Gerente'), ('Administrador');
 CREATE TABLE Usuario (
     idUsuario INT,
     email VARCHAR(80) NOT NULL,
-    nome VARCHAR(45) NOT NULL,
+    nome VARCHAR(80) NOT NULL,
     senha VARCHAR(60) NOT NULL, 
     telefone VARCHAR(15),        
     fkCargo INT NOT NULL,
@@ -76,7 +76,7 @@ VALUES
 CREATE TABLE Lembrete (
     fkUsuario INT NOT NULL,
     fkEmpresa INT NOT NULL,
-    Parametro1 VARCHAR(45),
+    Parametro1 VARCHAR(70),
     Parametro2 DECIMAL(5,2),
     FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
