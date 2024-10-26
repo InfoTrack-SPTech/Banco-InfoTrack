@@ -12,7 +12,7 @@ CREATE TABLE Logradouro (
     numero VARCHAR(10),
     latitude DECIMAL(9, 6),
     longitude DECIMAL(9, 6),
-    fkBairro INT NOT NULL,
+    fkBairro INT,
     FOREIGN KEY (fkBairro) REFERENCES Bairro(idBairro)
 );
 
@@ -24,10 +24,10 @@ CREATE TABLE Local (
 CREATE TABLE Crime (
     idCrime INT AUTO_INCREMENT PRIMARY KEY,
     natureza VARCHAR(100) ,
-    dataOcorrencia DATETIME,
+    dataOcorrencia DATE,
     descricao VARCHAR(255),      
-    fkLogradouro INT NOT NULL,
-    fkLocal INT NOT NULL,
+    fkLogradouro INT,
+    fkLocal INT,
     FOREIGN KEY (fkLogradouro) REFERENCES Logradouro(idLogradouro),
     FOREIGN KEY (fkLocal) REFERENCES Local(idLocal)
 );
