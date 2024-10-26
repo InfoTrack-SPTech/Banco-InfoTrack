@@ -1,9 +1,9 @@
-CREATE DATABASE InfoTrack;
+create DATABASE InfoTrack;
 USE InfoTrack;
 
 CREATE TABLE Bairro (
     idBairro INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45)
+    nome VARCHAR(100)
 );
 
 CREATE TABLE Logradouro (
@@ -12,7 +12,7 @@ CREATE TABLE Logradouro (
     numero VARCHAR(10),
     latitude DECIMAL(9, 6),
     longitude DECIMAL(9, 6),
-    fkBairro INT NOT NULL,
+    fkBairro INT,
     FOREIGN KEY (fkBairro) REFERENCES Bairro(idBairro)
 );
 
@@ -26,8 +26,8 @@ CREATE TABLE Crime (
     natureza VARCHAR(45) ,
     dataOcorrencia DATETIME,
     descricao VARCHAR(255),      
-    fkLogradouro INT NOT NULL,
-    fkLocal INT NOT NULL,
+    fkLogradouro INT,
+    fkLocal INT,
     FOREIGN KEY (fkLogradouro) REFERENCES Logradouro(idLogradouro),
     FOREIGN KEY (fkLocal) REFERENCES Local(idLocal)
 );
@@ -82,3 +82,6 @@ CREATE TABLE Lembrete (
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
     UNIQUE(Parametro1, Parametro2)
 );
+
+select count(*) from bairro;
+
