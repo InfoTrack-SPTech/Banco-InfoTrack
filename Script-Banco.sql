@@ -1,8 +1,6 @@
 create DATABASE InfoTrack;
 USE InfoTrack;
-show tables;
 
-select * from usuario;
 
 CREATE TABLE Bairro (
     idBairro INT AUTO_INCREMENT PRIMARY KEY,
@@ -75,21 +73,4 @@ VALUES
     ('biancaRodrigues@infotrack.com', 'Bianca Rodrigues', 'Bianca30', '11999933333', 3, 1),
     ('alejandroCastor@infotrack.com', 'Alejandro Castor', 'Alejandro40', '11999944444', 3, 1),
     ('cintiaOhara@infotrack.com', 'Cintia Ohara', 'Cintia50', '11999955555', 3, 1);
-
-CREATE TABLE Lembrete (
-    fkUsuario INT NOT NULL,
-    fkEmpresa INT NOT NULL,
-    Parametro1 VARCHAR(70),
-    Parametro2 DECIMAL(5,2),
-    FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
-    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
-	UNIQUE(fkUsuario, fkEmpresa)
-);
-
-use InfoTrack;
-show tables;
-select * from usuario;
-select * from local;
-select * from bairro;
-select * from logradouro;
-desc crime;
+    
