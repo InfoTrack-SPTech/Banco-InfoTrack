@@ -73,4 +73,13 @@ VALUES
     ('biancaRodrigues@infotrack.com', 'Bianca Rodrigues', 'Bianca30', '11999933333', 3, 1),
     ('alejandroCastor@infotrack.com', 'Alejandro Castor', 'Alejandro40', '11999944444', 3, 1),
     ('cintiaOhara@infotrack.com', 'Cintia Ohara', 'Cintia50', '11999955555', 3, 1);
-    
+
+CREATE TABLE Recomendacao (
+    idRecomendacao INT PRIMARY KEY AUTO_INCREMENT,
+    fkEmpresa INT,
+    descricao TEXT,
+    tipoRecomendacao VARCHAR(50),
+    dataGeracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    geradoPor VARCHAR(50) DEFAULT 'IA',
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+);
