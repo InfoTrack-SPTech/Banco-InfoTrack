@@ -1,9 +1,5 @@
 CREATE DATABASE InfoTrack;
 USE InfoTrack;
-<<<<<<< HEAD
-=======
-
->>>>>>> 380de0cd3c92193f4044d51f54de3bffb17355eb
 
 CREATE TABLE Bairro (
     idBairro INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,8 +10,8 @@ CREATE TABLE Logradouro (
     idLogradouro INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     numero VARCHAR(10),
-    latitude varchar(12),
-    longitude varchar(12),
+    latitude VARCHAR(12),
+    longitude VARCHAR(12),
     fkBairro INT,
     FOREIGN KEY (fkBairro) REFERENCES Bairro(idBairro)
 );
@@ -76,9 +72,6 @@ VALUES
     ('biancaRodrigues@infotrack.com', 'Bianca Rodrigues', 'Bianca30', '11999933333', 3, 1),
     ('alejandroCastor@infotrack.com', 'Alejandro Castor', 'Alejandro40', '11999944444', 3, 1),
     ('cintiaOhara@infotrack.com', 'Cintia Ohara', 'Cintia50', '11999955555', 3, 1);
-<<<<<<< HEAD
-    
-=======
 
 CREATE TABLE Recomendacao (
     idRecomendacao INT PRIMARY KEY AUTO_INCREMENT,
@@ -89,4 +82,3 @@ CREATE TABLE Recomendacao (
     geradoPor VARCHAR(50) DEFAULT 'IA',
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
->>>>>>> 380de0cd3c92193f4044d51f54de3bffb17355eb
