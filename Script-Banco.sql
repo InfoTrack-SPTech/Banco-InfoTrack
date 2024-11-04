@@ -1,18 +1,17 @@
-create DATABASE InfoTrack;
+CREATE DATABASE InfoTrack;
 USE InfoTrack;
-
 
 CREATE TABLE Bairro (
     idBairro INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) constraint chk_nome check (nome in ("", "", ""))
+    nome VARCHAR(100)
 );
 
 CREATE TABLE Logradouro (
     idLogradouro INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     numero VARCHAR(10),
-    latitude varchar(12),
-    longitude varchar(12),
+    latitude VARCHAR(12),
+    longitude VARCHAR(12),
     fkBairro INT,
     FOREIGN KEY (fkBairro) REFERENCES Bairro(idBairro)
 );
@@ -45,7 +44,7 @@ VALUES ('InfoTrack', '12345678000199', '11999999999');
 
 CREATE TABLE Cargo (
     idCargo INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50)
+    nome VARCHAR(50) CONSTRAINT chk_nome CHECK (nome IN ('Analista', 'Gerente', 'Administrador'))
 );
 
 ALTER TABLE Cargo ADD CONSTRAINT chk_nome_cargo CHECK (nome IN ('Analista', 'Gerente', 'Administrador'));
