@@ -25,7 +25,7 @@ CREATE TABLE Crime (
     idCrime INT AUTO_INCREMENT PRIMARY KEY,
     natureza VARCHAR(100) ,
     dataOcorrencia DATETIME,
-    descricao VARCHAR(255),      
+    artigo VARCHAR(50),      
     fkLogradouro INT,
     fkLocal INT,
     FOREIGN KEY (fkLogradouro) REFERENCES Logradouro(idLogradouro),
@@ -40,11 +40,15 @@ CREATE TABLE Empresa (
 );
 
 INSERT INTO Empresa (nome, cnpj, telefone)
-VALUES ('InfoTrack', '12345678000199', '11999999999');
+VALUES ('InfoTrack', '12345678000199', '11999999999'),
+	   ('Stefanini', '78945612365478', '11955936541'),
+	   ('C6 Bank', '88888888888888', '11940872213'),
+	   ('Sem Parar', '74125896369852', '11978642892'),
+	   ('Minsait', '99999999999999', '11955936550');
 
 CREATE TABLE Cargo (
     idCargo INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50) CONSTRAINT chk_nome CHECK (nome IN ('Analista', 'Gerente', 'Administrador'))
+    nome VARCHAR(50)
 );
 
 ALTER TABLE Cargo ADD CONSTRAINT chk_nome_cargo CHECK (nome IN ('Analista', 'Gerente', 'Administrador'));
@@ -72,13 +76,3 @@ VALUES
     ('biancaRodrigues@infotrack.com', 'Bianca Rodrigues', 'Bianca30', '11999933333', 3, 1),
     ('alejandroCastor@infotrack.com', 'Alejandro Castor', 'Alejandro40', '11999944444', 3, 1),
     ('cintiaOhara@infotrack.com', 'Cintia Ohara', 'Cintia50', '11999955555', 3, 1);
-
-CREATE TABLE Recomendacao (
-    idRecomendacao INT PRIMARY KEY AUTO_INCREMENT,
-    fkEmpresa INT,
-    descricao TEXT,
-    tipoRecomendacao VARCHAR(50),
-    dataGeracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    geradoPor VARCHAR(50) DEFAULT 'IA',
-    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
-);
