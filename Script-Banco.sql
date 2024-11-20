@@ -10,8 +10,8 @@ CREATE TABLE Logradouro (
     idLogradouro INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     numero VARCHAR(10),
-    latitude VARCHAR(12),
-    longitude VARCHAR(12),
+    latitude varchar(12),
+    longitude varchar(12),
     fkBairro INT,
     FOREIGN KEY (fkBairro) REFERENCES Bairro(idBairro)
 );
@@ -25,7 +25,7 @@ CREATE TABLE Crime (
     idCrime INT AUTO_INCREMENT PRIMARY KEY,
     natureza VARCHAR(100) ,
     dataOcorrencia DATETIME,
-    descricao VARCHAR(255),      
+    artigo VARCHAR(50),      
     fkLogradouro INT,
     fkLocal INT,
     FOREIGN KEY (fkLogradouro) REFERENCES Logradouro(idLogradouro),
@@ -40,7 +40,11 @@ CREATE TABLE Empresa (
 );
 
 INSERT INTO Empresa (nome, cnpj, telefone)
-VALUES ('InfoTrack', '12345678000199', '11999999999');
+VALUES ('InfoTrack', '12345678000199', '11999999999'),
+('Minsait', '12345678000199', '11955936541'),
+('Sem Parar', '12345678000199', '11978642892'),
+('C6 Bank', '99999999999999', '11940872213'),
+('Stefanine', '78945612365478', '11955936550');
 
 CREATE TABLE Cargo (
     idCargo INT AUTO_INCREMENT PRIMARY KEY,
